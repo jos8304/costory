@@ -1,11 +1,29 @@
-{% extends "./base.html" %}
+{% extends './base.html' %}
+{% load static %}
 
-{% block post_container %}
-    <h2>{{post.title}}</h2>
-    <div>Create Date{{post.dt_created}}</div>
-    <hr>
-    <div>{{post.content|linebreaksbr}}</div>
-    <hr>
-    <a href='{% url "post-list" %}'>Back</a>
+<!-- post_detail css -->
 
-{% endblock post_container %}
+{% block css %}
+    <link rel="stylesheet" href="{% static "posts/css/post_detail.css" %}">
+{% endblock css %}
+
+{% block post_header %}
+<!-- post_detail header-->
+<div class="container">
+    <h1 class="title">{{post.title}}</h1>
+    <p class="date">{{post.dt_created}}</p>
+</div>
+{% endblock post_header %}
+
+
+<!-- post_detail content-->
+{% block content %}
+<div class="content">
+    <p class="text">{{post.content|linebreaksbr}}</p>
+    <p class="date_md">Date of modify <span>{{dt_modified}}</span></p>
+</div>
+    <div class="btn">
+    <div class="btn_list"><a href={% url "post-list" %}>List</a></div>
+</div>
+
+{% endblock content %}
