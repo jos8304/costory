@@ -43,6 +43,9 @@ def post_delete(request, post_id):
     else:
         return render(request, 'posts/post_confirm_delete.html', {'post': post})
 
+# def index(request):
+#     return redirect('post-list')
+
 
 
     
