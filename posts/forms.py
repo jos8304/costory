@@ -8,8 +8,14 @@ from django.core.exceptions import ValidationError
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-
         fields = ['title', 'content']
+        widgets ={'title': forms.TextInput(attrs={
+            'class':'title',
+            'placeholder': 'input title'}),
+            'content': forms.Textarea(attrs={
+                'placeholder': 'input content'
+            })        
+        }
     
     def clen_title(self):
         title = self.cleaned_data['title']
